@@ -3,8 +3,26 @@ import json
 from bs4 import BeautifulSoup
 
 
+# scrape data using beautifulsoup
 def scrape_cpp_data():
-    URL = "https://catalog.cpp.edu/preview_program.php?catoid=65&poid=17161"
+    url_2021 = "https://catalog.cpp.edu/preview_program.php?catoid=57&poid=14912"
+    url_2022 = "https://catalog.cpp.edu/preview_program.php?catoid=61&poid=15936"
+    url_2023 = "https://catalog.cpp.edu/preview_program.php?catoid=65&poid=17161"
+
+    global enrollment_year
+    enrollment_year = input("What year did you start at CPP (2021 to 2023): ")
+
+    match enrollment_year:
+        case "2021":
+            URL = url_2021
+        case "2022":
+            URL = url_2022
+        case "2023":
+            URL = url_2023
+        case _:
+            URL = url_2023
+            print("Invalid year. Using 2023 default.")
+
     page = requests.get(URL)
 
     soup = BeautifulSoup(page.content, "html.parser")
@@ -96,10 +114,10 @@ def recommend_course():
         print("Here are the available areas and their sections: \n")
 
         for area in area_map.keys():
-            # if area_map[area]:
-            print("AREA " + area)
-            print(area_map[area])
-            print()
+            if area_map[area]:
+                print("AREA " + area)
+                print(area_map[area])
+                print()
 
         requested_data = input(
             "Enter the class area + section you would like to search the easiest class for (ex. A1, B2, C3) or enter Q to quit: "
@@ -176,6 +194,5 @@ def recommend_course():
 
 scrape_cpp_data()
 categorize_courses()
-print()
 get_opencpp_api_data()
 recommend_course()

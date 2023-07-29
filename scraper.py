@@ -41,6 +41,14 @@ def categorize_courses():
             area_stack.insert(0, area.text[5])
             current_area = area_stack[0]
 
+            # edge case as these two don't have sections, just the area
+            if current_area == "E":
+                current_section = "0. E SECTION"
+                section_map[current_section] = []
+            elif current_area == "F":
+                current_section = "0. F SECTION"
+                section_map[current_section] = []
+
             area_map[current_area] = []
 
         if section:
@@ -68,6 +76,10 @@ def categorize_courses():
 
                     section_map[current_section].append(span.text[0 : end_marker - 1])
 
+    # hard code solution for E and F
+    area_map["E"].append("0. E SECTION")
+    area_map["F"].append("0. F SECTION")
+
 
 def get_opencpp_api_data():
     global response
@@ -84,13 +96,18 @@ def recommend_course():
         print("Here are the available areas and their sections: \n")
 
         for area in area_map.keys():
-            print(area)
+            # if area_map[area]:
+            print("AREA " + area)
             print(area_map[area])
             print()
 
         requested_data = input(
             "Enter the class area + section you would like to search the easiest class for (ex. A1, B2, C3) or enter Q to quit: "
         )
+
+        if requested_data.lower() == "q":
+            run = False
+            break
 
         if len(requested_data) < 2:
             print("Input is too short. Try again.")
@@ -150,14 +167,15 @@ def recommend_course():
 
         requested_data = input("\nSearch again? Y/N: ")
 
-        if requested_data.lower() == "n":
+        if requested_data.lower() == "y":
+            continue
+        else:
             run = False
             break
-        else:
-            continue
 
 
 scrape_cpp_data()
 categorize_courses()
+print()
 get_opencpp_api_data()
 recommend_course()

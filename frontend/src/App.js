@@ -10,6 +10,9 @@ import CssBaseline from "@mui/material/CssBaseline";
 // CSS Imports
 import "./App.css";
 
+// Component Imports
+import Class from "./components/Class.jsx";
+
 const darkTheme = createTheme({
   palette: {
     mode: "dark",
@@ -20,6 +23,7 @@ export default function App() {
   const [year, setYear] = useState("");
   const [areaSection, setAreaSection] = useState("");
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+  const [jsonResponse, setJsonResponse] = useState([]);
 
   async function postJSON(data) {
     try {
@@ -32,6 +36,7 @@ export default function App() {
       });
 
       const result = await response.json();
+      setJsonResponse(result);
       console.log("Success:", result);
     } catch (error) {
       console.error("Error:", error);
@@ -93,6 +98,8 @@ export default function App() {
         >
           Recommend Course
         </Button>
+
+        <Class jsonResponse={jsonResponse} />
       </div>
     </ThemeProvider>
   );

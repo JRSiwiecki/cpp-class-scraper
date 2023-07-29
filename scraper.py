@@ -183,13 +183,8 @@ def recommend_course():
         for course_gpa in course_gpas:
             print(course_gpa)
 
-        requested_data = input("\nSearch again? Y/N: ")
-
-        if requested_data.lower() == "y":
-            continue
-        else:
-            run = False
-            break
+        result_json = json.dumps(course_gpas)
+        return result_json
 
 
 scrape_cpp_data()

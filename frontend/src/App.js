@@ -8,7 +8,7 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 
 // CSS Imports
-import "./App.css";
+import "./css/App.css";
 
 // Component Imports
 import Class from "./components/Class.jsx";
@@ -70,25 +70,29 @@ export default function App() {
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
       <div class="App">
-        <h1>General Education Course Recommender</h1>
-        <TextField
-          id="outlined-basic"
-          label="Catalog Year"
-          variant="outlined"
-          required
-          helperText="2021-2023"
-          value={year}
-          onChange={handleYearChange}
-        />
-        <TextField
-          id="outlined-basic"
-          label="Area + Section"
-          variant="outlined"
-          required
-          helperText="Ex) A1, B2, C3, E0, F0"
-          value={areaSection}
-          onChange={handleAreaSectionChange}
-        />
+        <h1 class="app-header">General Education Course Recommender</h1>
+
+        <div class="text-input-container">
+          <TextField
+            id="outlined-basic"
+            label="Catalog Year"
+            variant="outlined"
+            required
+            helperText="2021-2023"
+            value={year}
+            onChange={handleYearChange}
+          />
+          <TextField
+            id="outlined-basic"
+            label="Area + Section"
+            variant="outlined"
+            required
+            helperText="Ex) A1, B2, C3, E0, F0"
+            value={areaSection}
+            onChange={handleAreaSectionChange}
+          />
+        </div>
+
         <br />
         <br />
         <Button

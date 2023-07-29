@@ -4,15 +4,12 @@ from bs4 import BeautifulSoup
 
 
 # scrape data using beautifulsoup
-def scrape_cpp_data():
+def scrape_cpp_data(catalog_year):
     url_2021 = "https://catalog.cpp.edu/preview_program.php?catoid=57&poid=14912"
     url_2022 = "https://catalog.cpp.edu/preview_program.php?catoid=61&poid=15936"
     url_2023 = "https://catalog.cpp.edu/preview_program.php?catoid=65&poid=17161"
 
-    global enrollment_year
-    enrollment_year = input("What year did you start at CPP (2021 to 2023): ")
-
-    match enrollment_year:
+    match catalog_year:
         case "2021":
             URL = url_2021
         case "2022":
@@ -21,7 +18,8 @@ def scrape_cpp_data():
             URL = url_2023
         case _:
             URL = url_2023
-            print("Invalid year. Using 2023 default.")
+            response = {"Message": "Year invalid."}
+            return json.dumps(response)
 
     page = requests.get(URL)
 
@@ -107,44 +105,34 @@ def get_opencpp_api_data():
     json_object = json.loads(response.text)
 
 
-def recommend_course():
+def recommend_course(area_section):
     run = True
 
     while run:
-        print("Here are the available areas and their sections: \n")
-
-        for area in area_map.keys():
-            if area_map[area]:
-                print("AREA " + area)
-                print(area_map[area])
-                print()
-
-        requested_data = input(
-            "Enter the class area + section you would like to search the easiest class for (ex. A1, B2, C3) or enter Q to quit: "
-        )
+        requested_data = area_section
 
         if requested_data.lower() == "q":
             run = False
             break
 
         if len(requested_data) < 2:
-            print("Input is too short. Try again.")
-            continue
+            response = {"Message": "Input too short."}
+            return json.dumps(response)
 
         requested_area = requested_data[0].upper()
         requested_section = requested_data[1]
 
         if requested_area.isdigit():
-            print("Area must be a letter. Try again.")
-            continue
+            response = {"Message": "Area must be a letter."}
+            return json.dumps(response)
 
         if requested_section.isalpha():
-            print("Section must be a number. Try again.")
-            continue
+            response = {"Message": "Section must be a number."}
+            return json.dumps(response)
 
         if requested_area not in area_map:
-            print("Area does not exist. Try again.")
-            continue
+            response = {"Message": "Area does not exist."}
+            return json.dumps(response)
 
         found_sections = area_map[requested_area]
 
@@ -156,8 +144,8 @@ def recommend_course():
                 break
 
         if not found_classes:
-            print("No sections found. Try again.")
-            continue
+            response = {"Message": "No sections found."}
+            return json.dumps(response)
 
         course_codes = []
 
@@ -179,15 +167,5 @@ def recommend_course():
 
         course_gpas = sorted(course_gpas, key=lambda x: x[1], reverse=True)
 
-        print("The classes you should take by highest GPA are in this order: \n")
-        for course_gpa in course_gpas:
-            print(course_gpa)
-
         result_json = json.dumps(course_gpas)
         return result_json
-
-
-scrape_cpp_data()
-categorize_courses()
-get_opencpp_api_data()
-recommend_course()

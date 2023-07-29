@@ -160,12 +160,18 @@ def recommend_course(area_section):
             for course_code in course_codes:
                 if course_code in object["Label"]:
                     if object["AvgGPA"] is None:
-                        course_gpas.append([course_code, 0])
+                        course_gpas.append([course_code, object["CourseTitle"], 0])
                         continue
 
-                    course_gpas.append([course_code, round(float(object["AvgGPA"]), 2)])
+                    course_gpas.append(
+                        [
+                            course_code,
+                            object["CourseTitle"],
+                            round(float(object["AvgGPA"]), 2),
+                        ]
+                    )
 
-        course_gpas = sorted(course_gpas, key=lambda x: x[1], reverse=True)
+        course_gpas = sorted(course_gpas, key=lambda x: x[2], reverse=True)
 
         result_json = json.dumps(course_gpas)
         return result_json

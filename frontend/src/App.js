@@ -70,7 +70,7 @@ export default function App() {
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
       <div class="App">
-        <h1 class="app-header">General Education Course Recommender</h1>
+        <h1 class="app-header">CPP GE Course Recommender</h1>
 
         <div class="text-input-container">
           <TextField
@@ -87,7 +87,7 @@ export default function App() {
             label="Area + Section"
             variant="outlined"
             required
-            helperText="Ex) A1, B2, C3, E0, F0"
+            helperText="Ex) A1, B2, E0, F0"
             value={areaSection}
             onChange={handleAreaSectionChange}
           />
@@ -102,7 +102,7 @@ export default function App() {
         >
           Recommend Course
         </Button>
-
+        <h2>Recommended Courses</h2>
         <Class jsonResponse={jsonResponse} />
       </div>
     </ThemeProvider>

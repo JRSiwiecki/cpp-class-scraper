@@ -8,6 +8,17 @@ export default function Home() {
       <main>
         <header>
           <h1>Home</h1>
+          <h2>What is this?</h2>
+          <p>
+            This is a web application designed for CPP students to more easily
+            choose which general education courses to take.
+          </p>
+
+          <p>
+            For those asking for the "easiest" courses for GE sections like C3,
+            D1, E, etc., this is for you.
+          </p>
+
           <h2>Instructions for using Course Recommender</h2>
         </header>
 
@@ -28,8 +39,8 @@ export default function Home() {
 
           <p>
             5. The resulting list of classes contains the course label, course
-            title, and the total average GPA of all students who have taken the
-            course
+            title, and the total average GPA of all CPP students who have taken
+            the course
           </p>
 
           <p>

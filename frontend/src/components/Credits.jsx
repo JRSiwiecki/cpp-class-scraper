@@ -25,6 +25,13 @@ export default function Credits() {
       <a href="https://github.com/ZombiMigz/opencpp-api">
         ZombiMigz - OpenCPP API
       </a>
+      <br />
+      <a
+        href="https://www.flaticon.com/free-icons/education"
+        title="education icons"
+      >
+        Education icons created by Freepik - Flaticon
+      </a>
     </div>
   );
 }

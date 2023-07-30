@@ -120,7 +120,7 @@ export default function CourseRecommender() {
       </Button>
       <h2>Recommended Courses</h2>
       <h3>
-        {year} ~ {areaSection}
+        {year} {areaSection}
       </h3>
       <Class jsonResponse={jsonResponse} />
     </div>

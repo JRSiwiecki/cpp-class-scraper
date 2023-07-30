@@ -101,6 +101,7 @@ export default function CourseRecommender() {
             value={year}
             onChange={handleYearChange}
           />
+
           <TextField
             id="outlined-basic"
             label="Area + Section"
@@ -114,6 +115,7 @@ export default function CourseRecommender() {
 
         <br />
         <br />
+
         <Button
           variant="contained"
           onClick={handleClick}
@@ -121,7 +123,9 @@ export default function CourseRecommender() {
         >
           Recommend Course
         </Button>
+
         <h2>Recommended Courses</h2>
+
         <h3>
           {year} {areaSection}
         </h3>

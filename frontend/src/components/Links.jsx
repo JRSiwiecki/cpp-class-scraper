@@ -7,9 +7,11 @@ export default function Links() {
         <Link class="link" to="/">
           Home
         </Link>
+
         <Link class="link" to="/course-recommender">
           Course Recommender
         </Link>
+
         <Link class="link" to="/credits">
           Credits
         </Link>

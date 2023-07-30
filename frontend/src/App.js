@@ -23,7 +23,7 @@ export default function App() {
       <CssBaseline />
 
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/course-recommender" element={<CourseRecommender />} />
         <Route path="/credits" element={<Credits />} />
       </Routes>

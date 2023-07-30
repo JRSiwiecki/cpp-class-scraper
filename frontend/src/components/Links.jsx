@@ -4,7 +4,7 @@ export default function Links() {
   return (
     <header>
       <nav class="link-container">
-        <Link class="link" to="/">
+        <Link class="link" to="/home">
           Home
         </Link>
 

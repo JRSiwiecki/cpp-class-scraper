@@ -25,6 +25,10 @@ export default function Home() {
           </p>
 
           <p>4. Click recommend courses</p>
+
+          <p>
+            <em>Note that some classes may appear twice.</em>
+          </p>
         </div>
       </main>
     </div>

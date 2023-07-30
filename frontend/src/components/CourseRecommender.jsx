@@ -19,13 +19,16 @@ export default function CourseRecommender() {
 
   async function postJSON(data) {
     try {
-      const response = await fetch("/api/recommend", {
-        method: "POST", // or 'PUT'
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
+      const response = await fetch(
+        "https://cpp-ge-recommender-fe170ad56f61.herokuapp.com//api/recommend",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      );
 
       const result = await response.json();
       setJsonResponse(result);

@@ -8,7 +8,7 @@ from scraper import (
     recommend_course,
 )
 
-app = Flask(__name__, static_folder="frontend/build", static_url_path="")
+app = Flask(__name__, static_folder="../frontend/build", static_url_path="")
 cors = CORS(app)
 
 get_opencpp_api_data()

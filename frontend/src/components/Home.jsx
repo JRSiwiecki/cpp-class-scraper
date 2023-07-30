@@ -24,7 +24,13 @@ export default function Home() {
             course recommendation
           </p>
 
-          <p>4. Click recommend courses</p>
+          <p>4. Click recommend courses!</p>
+
+          <p>
+            5. The resulting list of classes contains the course label, course
+            title, and the total average GPA of all students who have taken the
+            course
+          </p>
 
           <p>
             <em>Note that some classes may appear twice.</em>

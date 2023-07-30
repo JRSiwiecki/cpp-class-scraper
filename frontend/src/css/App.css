@@ -35,8 +35,20 @@
   background-color: #174145;
 }
 
+.about-container main a {
+  color: #87cefa;
+}
+
+.about-container main a:visited {
+  color: #aa8fc7;
+}
+
+.about-container main a:hover {
+  color: #ffffffb6;
+}
+
 .home-container,
-.credits-container {
+.about-container {
   text-align: center;
 }
 

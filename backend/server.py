@@ -13,16 +13,9 @@ cors = CORS(app)
 
 get_opencpp_api_data()
 
-
-@app.route("/", defaults={"path": ""})
-@app.route("/<path:path>")
-def catch_all(path):
-    return app.send_static_file("index.html")
-
-
-@app.route("/")
-def hello_world():
-    return "<p>Hello, world!</p>"
+# @app.route("/")
+# def hello_world():
+#     return "<p>Hello, world!</p>"
 
 
 @app.route("/api/recommend", methods=["POST"])
@@ -43,5 +36,11 @@ def api_recommend_course():
     return recommend_courses
 
 
-if __name__ == "__main__":
-    app.run(debug=True)
+@app.route("/", defaults={"path": ""})
+@app.route("/<path:path>")
+def catch_all(path):
+    return app.send_static_file("index.html")
+
+
+# if __name__ == "__main__":
+#     app.run(debug=True)

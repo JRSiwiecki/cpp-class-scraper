@@ -20,8 +20,8 @@ export default function Home() {
           </p>
 
           <p>
-            3. Input the general education section you would like to be
-            recommended courses for
+            3. Input the general education section for which you would like a
+            course recommendation
           </p>
 
           <p>4. Click recommend courses</p>

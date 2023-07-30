@@ -32,7 +32,23 @@
 }
 
 .home-container,
-.instructions-container,
 .credits-container {
   text-align: center;
+}
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.instructions-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 20px;
+}
+
+.instructions-container p {
+  margin: 0;
 }

@@ -85,6 +85,7 @@ export default function CourseRecommender() {
   return (
     <div class="App">
       <Link to="/">Home</Link>
+      <Link to="/instructions">Instructions</Link>
       <Link to="/credits">Credits</Link>
       <h1 class="app-header">CPP GE Course Recommender</h1>
       <div class="text-input-container">

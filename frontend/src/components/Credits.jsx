@@ -7,6 +7,7 @@ export default function Credits() {
       <h1>Credits</h1>
       <Link to="/">Home</Link>
       <Link to="/course-recommender">Course Recommender</Link>
+      <Link to="/instructions">Instructions</Link>
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import json
-from flask import Flask, jsonify, request
+from flask import Flask, request
+from flask_cors import CORS, cross_origin
 from scraper import (
     scrape_cpp_data,
     categorize_courses,
@@ -7,7 +8,8 @@ from scraper import (
     recommend_course,
 )
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder="frontend/build", static_url_path="")
+cors = CORS(app)
 
 get_opencpp_api_data()
 

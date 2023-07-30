@@ -13,7 +13,7 @@ const courseNameStyle = {
 };
 
 const gpaStyle = {
-  marginLeft: "16px",
+  marginLeft: "20px",
 };
 
 export default function Class({ jsonResponse }) {
@@ -24,7 +24,9 @@ export default function Class({ jsonResponse }) {
           <ListItem key={index} style={listItemStyle}>
             <div style={courseNameStyle}>
               <ListItemText primary={course[0]} />
-              <ListItemText primary={course[1]} />
+              <em>
+                <ListItemText primary={course[1]} />
+              </em>
             </div>
             <div style={gpaStyle}>GPA: {course[2]}</div>
           </ListItem>

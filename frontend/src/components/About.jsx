@@ -1,14 +1,25 @@
 import * as React from "react";
 import Links from "./Links";
 
-export default function Credits() {
+export default function About() {
   return (
     <div class="credits-container">
       <Links />
       <main>
         <header>
-          <h1>Credits</h1>
+          <h1>About + Credits</h1>
         </header>
+
+        <h1>Creator</h1>
+        <p>Made by Joseph Siwiecki</p>
+
+        <a href="https://www.linkedin.com/in/josephsiwiecki/">LinkedIn</a>
+
+        <br />
+
+        <a href="https://github.com/JRSiwiecki/cpp-ge-recommender">
+          Github Repository
+        </a>
 
         <h2>Frameworks & Libraries</h2>
 
@@ -47,6 +58,10 @@ export default function Credits() {
         >
           Education icons created by Freepik - Flaticon
         </a>
+
+        <br />
+
+        <p>Not affiliated with CPP.</p>
       </main>
     </div>
   );

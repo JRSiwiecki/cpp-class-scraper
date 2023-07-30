@@ -12,8 +12,8 @@ export default function Links() {
           Course Recommender
         </Link>
 
-        <Link class="link" to="/credits">
-          Credits
+        <Link class="link" to="/about">
+          About
         </Link>
       </nav>
     </header>

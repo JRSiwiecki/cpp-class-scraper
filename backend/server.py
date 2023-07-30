@@ -14,6 +14,12 @@ cors = CORS(app)
 get_opencpp_api_data()
 
 
+@app.route("/", defaults={"path": ""})
+@app.route("/<path:path>")
+def catch_all(path):
+    return app.send_static_file("index.html")
+
+
 @app.route("/")
 def hello_world():
     return "<p>Hello, world!</p>"

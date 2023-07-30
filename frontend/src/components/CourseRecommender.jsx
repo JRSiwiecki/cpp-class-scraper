@@ -83,10 +83,19 @@ export default function CourseRecommender() {
   }
 
   return (
-    <div class="App">
-      <Link to="/">Home</Link>
-      <Link to="/instructions">Instructions</Link>
-      <Link to="/credits">Credits</Link>
+    <div class="course-recommender-container">
+      <div class="link-container">
+        <Link class="link" to="/">
+          Home
+        </Link>
+        <Link class="link" to="/instructions">
+          Instructions
+        </Link>
+        <Link class="link" to="/credits">
+          Credits
+        </Link>
+      </div>
+
       <h1 class="app-header">CPP GE Course Recommender</h1>
       <div class="text-input-container">
         <TextField

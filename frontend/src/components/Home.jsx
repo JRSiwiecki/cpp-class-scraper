@@ -3,11 +3,19 @@ import { Link } from "react-router-dom";
 
 export default function Home() {
   return (
-    <div>
+    <div class="home-container">
       <h1>Home</h1>
-      <Link to="/course-recommender">Course Recommender</Link>
-      <Link to="/instructions">Instructions</Link>
-      <Link to="/credits">Credits</Link>
+      <div class="link-container">
+        <Link class="link" to="/course-recommender">
+          Course Recommender
+        </Link>
+        <Link class="link" to="/instructions">
+          Instructions
+        </Link>
+        <Link class="link" to="/credits">
+          Credits
+        </Link>
+      </div>
     </div>
   );
 }

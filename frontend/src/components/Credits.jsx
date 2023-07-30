@@ -3,11 +3,19 @@ import { Link } from "react-router-dom";
 
 export default function Credits() {
   return (
-    <div>
+    <div class="credits-container">
       <h1>Credits</h1>
-      <Link to="/">Home</Link>
-      <Link to="/course-recommender">Course Recommender</Link>
-      <Link to="/instructions">Instructions</Link>
+      <div class="link-container">
+        <Link class="link" to="/">
+          Home
+        </Link>
+        <Link class="link" to="/course-recommender">
+          Course Recommender
+        </Link>
+        <Link class="link" to="/instructions">
+          Instructions
+        </Link>
+      </div>
     </div>
   );
 }

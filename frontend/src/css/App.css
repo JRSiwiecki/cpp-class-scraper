@@ -1,4 +1,4 @@
-.App {
+.course-recommender-container {
   text-align: center;
   display: flex;
   align-items: center;
@@ -11,4 +11,20 @@
   justify-content: space-evenly;
   flex-direction: row;
   margin: 2%;
+}
+
+.link-container {
+  margin: 2.5%;
+}
+
+.link {
+  margin: 1rem;
+  text-decoration: none;
+  color: aqua;
+}
+
+.home-container,
+.instructions-container,
+.credits-container {
+  text-align: center;
 }

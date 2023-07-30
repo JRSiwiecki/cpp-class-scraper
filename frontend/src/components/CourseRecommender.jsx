@@ -119,6 +119,9 @@ export default function CourseRecommender() {
         Recommend Course
       </Button>
       <h2>Recommended Courses</h2>
+      <h3>
+        {year} ~ {areaSection}
+      </h3>
       <Class jsonResponse={jsonResponse} />
     </div>
   );

@@ -9,7 +9,8 @@ import { TextField } from "@mui/material";
 import "../css/App.css";
 
 // Component Imports
-import Class from "./Class.jsx";
+import Class from "./Class";
+import Links from "./Links";
 
 export default function CourseRecommender() {
   const [year, setYear] = useState("");
@@ -84,17 +85,7 @@ export default function CourseRecommender() {
 
   return (
     <div class="course-recommender-container">
-      <div class="link-container">
-        <Link class="link" to="/">
-          Home
-        </Link>
-        <Link class="link" to="/instructions">
-          Instructions
-        </Link>
-        <Link class="link" to="/credits">
-          Credits
-        </Link>
-      </div>
+      <Links />
 
       <h1 class="app-header">CPP GE Course Recommender</h1>
       <div class="text-input-container">

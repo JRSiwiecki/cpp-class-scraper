@@ -14,13 +14,21 @@
 }
 
 .link-container {
-  margin: 2.5%;
+  margin: 2rem;
 }
 
 .link {
+  border: solid;
+  border-radius: 5%;
   margin: 1rem;
+  padding: 1rem;
   text-decoration: none;
   color: aqua;
+  transition: 0.35s;
+}
+
+.link:hover {
+  background-color: blue;
 }
 
 .home-container,

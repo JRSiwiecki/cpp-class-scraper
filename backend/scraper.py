@@ -106,72 +106,65 @@ def get_opencpp_api_data():
 
 
 def recommend_course(area_section):
-    run = True
+    requested_data = area_section
 
-    while run:
-        requested_data = area_section
+    if len(requested_data) < 2:
+        response = {"Message": "Input too short."}
+        return json.dumps(response)
 
-        if requested_data.lower() == "q":
-            run = False
+    requested_area = requested_data[0].upper()
+    requested_section = requested_data[1]
+
+    if requested_area.isdigit():
+        response = {"Message": "Area must be a letter."}
+        return json.dumps(response)
+
+    if requested_section.isalpha():
+        response = {"Message": "Section must be a number."}
+        return json.dumps(response)
+
+    if requested_area not in area_map:
+        response = {"Message": "Area does not exist."}
+        return json.dumps(response)
+
+    found_sections = area_map[requested_area]
+
+    found_classes = []
+
+    for section in found_sections:
+        if requested_section in section:
+            found_classes = section_map[section]
             break
 
-        if len(requested_data) < 2:
-            response = {"Message": "Input too short."}
-            return json.dumps(response)
+    if not found_classes:
+        response = {"Message": "No sections found."}
+        return json.dumps(response)
 
-        requested_area = requested_data[0].upper()
-        requested_section = requested_data[1]
+    course_codes = []
 
-        if requested_area.isdigit():
-            response = {"Message": "Area must be a letter."}
-            return json.dumps(response)
+    for found_class in found_classes:
+        end_marker = found_class.index("-") - 1
 
-        if requested_section.isalpha():
-            response = {"Message": "Section must be a number."}
-            return json.dumps(response)
+        course_codes.append(found_class[0:end_marker])
 
-        if requested_area not in area_map:
-            response = {"Message": "Area does not exist."}
-            return json.dumps(response)
+    course_gpas = []
 
-        found_sections = area_map[requested_area]
+    for object in json_object:
+        for course_code in course_codes:
+            if course_code in object["Label"]:
+                if object["AvgGPA"] is None:
+                    course_gpas.append([course_code, object["CourseTitle"], 0])
+                    continue
 
-        found_classes = []
+                course_gpas.append(
+                    [
+                        course_code,
+                        object["CourseTitle"],
+                        round(float(object["AvgGPA"]), 2),
+                    ]
+                )
 
-        for section in found_sections:
-            if requested_section in section:
-                found_classes = section_map[section]
-                break
+    course_gpas = sorted(course_gpas, key=lambda x: x[2], reverse=True)
 
-        if not found_classes:
-            response = {"Message": "No sections found."}
-            return json.dumps(response)
-
-        course_codes = []
-
-        for found_class in found_classes:
-            end_marker = found_class.index("-") - 1
-
-            course_codes.append(found_class[0:end_marker])
-
-        course_gpas = []
-
-        for object in json_object:
-            for course_code in course_codes:
-                if course_code in object["Label"]:
-                    if object["AvgGPA"] is None:
-                        course_gpas.append([course_code, object["CourseTitle"], 0])
-                        continue
-
-                    course_gpas.append(
-                        [
-                            course_code,
-                            object["CourseTitle"],
-                            round(float(object["AvgGPA"]), 2),
-                        ]
-                    )
-
-        course_gpas = sorted(course_gpas, key=lambda x: x[2], reverse=True)
-
-        result_json = json.dumps(course_gpas)
-        return result_json
+    result_json = json.dumps(course_gpas)
+    return result_json

@@ -63,6 +63,30 @@ export default function App() {
       return;
     }
 
+    if (areaSection === "B3") {
+      alert(
+        "Section B3 contains no classes and is meant to be taken with a B2 class. Search in section B2 instead."
+      );
+      return;
+    }
+
+    let yearInt = parseInt(year);
+
+    if (yearInt < 2021 || yearInt > 2023) {
+      alert("Only catalogs from year 2021 to 2023 are available for search.");
+      return;
+    }
+
+    if (areaSection === "E") {
+      postJSON({ year: year, area_section: "E0" });
+      return;
+    }
+
+    if (areaSection === "F") {
+      postJSON({ year: year, area_section: "F0" });
+      return;
+    }
+
     postJSON({ year: year, area_section: areaSection });
   }
 

@@ -185,21 +185,32 @@ def recommend_course(area_section):
             if course_code in course_label:
                 course_title = object["CourseTitle"]
 
-                if "Honors" in course_title:
+                if course_title is not None and (
+                    "Honors" in course_title or "Activity" in course_title
+                ):
                     continue
 
-                if "M" in course_label[-1] or "H" in course_label[-1]:
+                course_component = course_label[-1]
+
+                if course_label is not None and (
+                    "M" in course_component
+                    or "H" in course_component
+                    or "L" in course_component
+                    or "A" in course_component
+                ):
                     continue
 
                 if object["AvgGPA"] is None:
                     course_gpas.append([course_code, course_title, 0])
                     continue
 
+                course_avg_gpa = object["AvgGPA"]
+
                 course_gpas.append(
                     [
                         course_code,
                         course_title,
-                        round(float(object["AvgGPA"]), 2),
+                        round(float(course_avg_gpa), 2),
                     ]
                 )
 

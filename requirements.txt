@@ -73,7 +73,7 @@ tzdata==2022.7
 uritemplate==4.1.1
 urllib3==1.26.12
 # Editable install with no version control (verify-email==2.4.3)
-pip install -e git+https://github.com/username/repo.git
+-e git+https://github.com/username/repo.git
 virtualenv==20.23.0
 virtualenv-clone==0.5.7
 Werkzeug==2.3.6

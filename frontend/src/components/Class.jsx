@@ -18,7 +18,7 @@ const gpaStyle = {
 
 export default function Class({ jsonResponse }) {
   return (
-    <div>
+    <section>
       <List>
         {jsonResponse.map((course, index) => (
           <ListItem key={index} style={listItemStyle}>
@@ -32,6 +32,6 @@ export default function Class({ jsonResponse }) {
           </ListItem>
         ))}
       </List>
-    </div>
+    </section>
   );
 }

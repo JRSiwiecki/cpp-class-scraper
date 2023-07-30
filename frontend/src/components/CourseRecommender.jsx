@@ -86,43 +86,47 @@ export default function CourseRecommender() {
   return (
     <div class="course-recommender-container">
       <Links />
+      <main>
+        <header>
+          <h1 class="app-header">CPP GE Course Recommender</h1>
+        </header>
 
-      <h1 class="app-header">CPP GE Course Recommender</h1>
-      <div class="text-input-container">
-        <TextField
-          id="outlined-basic"
-          label="Catalog Year"
-          variant="outlined"
-          required
-          helperText="2021-2023"
-          value={year}
-          onChange={handleYearChange}
-        />
-        <TextField
-          id="outlined-basic"
-          label="Area + Section"
-          variant="outlined"
-          required
-          helperText="Ex) A1, B2, E0, F0"
-          value={areaSection}
-          onChange={handleAreaSectionChange}
-        />
-      </div>
+        <div class="text-input-container">
+          <TextField
+            id="outlined-basic"
+            label="Catalog Year"
+            variant="outlined"
+            required
+            helperText="2021-2023"
+            value={year}
+            onChange={handleYearChange}
+          />
+          <TextField
+            id="outlined-basic"
+            label="Area + Section"
+            variant="outlined"
+            required
+            helperText="Ex) A1, B2, E0, F0"
+            value={areaSection}
+            onChange={handleAreaSectionChange}
+          />
+        </div>
 
-      <br />
-      <br />
-      <Button
-        variant="contained"
-        onClick={handleClick}
-        disabled={isButtonDisabled}
-      >
-        Recommend Course
-      </Button>
-      <h2>Recommended Courses</h2>
-      <h3>
-        {year} {areaSection}
-      </h3>
-      <Class jsonResponse={jsonResponse} />
+        <br />
+        <br />
+        <Button
+          variant="contained"
+          onClick={handleClick}
+          disabled={isButtonDisabled}
+        >
+          Recommend Course
+        </Button>
+        <h2>Recommended Courses</h2>
+        <h3>
+          {year} {areaSection}
+        </h3>
+        <Class jsonResponse={jsonResponse} />
+      </main>
     </div>
   );
 }

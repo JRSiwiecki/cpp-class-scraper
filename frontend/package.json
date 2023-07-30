@@ -1,9 +1,8 @@
 {
   "name": "frontend",
   "version": "0.1.0",
-  "homepage": "https://JRSiwiecki.github.io/cpp-ge-recommender/home",
+  "homepage": "https://JRSiwiecki.github.io/cpp-ge-recommender/#",
   "private": true,
-  "proxy": "http://127.0.0.1:5000",
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/style": "^0.8.0",

@@ -8,14 +8,15 @@ from scraper import (
     recommend_course,
 )
 
-app = Flask(__name__, static_folder="../frontend/build", static_url_path="")
+app = Flask(__name__)
 cors = CORS(app)
 
 get_opencpp_api_data()
 
-# @app.route("/")
-# def hello_world():
-#     return "<p>Hello, world!</p>"
+
+@app.route("/")
+def hello_world():
+    return "<p>Hello, world!</p>"
 
 
 @app.route("/api/recommend", methods=["POST"])
@@ -34,12 +35,6 @@ def api_recommend_course():
     recommend_courses = recommend_course(area_section)
 
     return recommend_courses
-
-
-@app.route("/", defaults={"path": ""})
-@app.route("/<path:path>")
-def catch_all(path):
-    return app.send_static_file("index.html")
 
 
 # if __name__ == "__main__":

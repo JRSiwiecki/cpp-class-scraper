@@ -9,6 +9,12 @@ def scrape_cpp_data(catalog_year):
     url_2022 = "https://catalog.cpp.edu/preview_program.php?catoid=61&poid=15936"
     url_2023 = "https://catalog.cpp.edu/preview_program.php?catoid=65&poid=17161"
 
+    accepted_years = ["2021", "2022", "2023"]
+
+    if catalog_year not in accepted_years:
+        response = {"Message": "Year invalid."}
+        return json.dumps(response)
+
     match catalog_year:
         case "2021":
             URL = url_2021
@@ -114,6 +120,29 @@ def recommend_course(area_section):
 
     requested_area = requested_data[0].upper()
     requested_section = requested_data[1]
+
+    accepted_area_sections = [
+        "A1",
+        "A2",
+        "A3",
+        "B1",
+        "B2",
+        "B4",
+        "B5",
+        "C1",
+        "C2",
+        "C3",
+        "D1",
+        "D2",
+        "D4",
+        "E0",
+        "F0",
+        "E",
+        "F",
+    ]
+
+    if requested_area not in accepted_area_sections:
+        response = {"Message": "Invalid area section."}
 
     if requested_area.isdigit():
         response = {"Message": "Area must be a letter."}

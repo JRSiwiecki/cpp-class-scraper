@@ -49,7 +49,36 @@ export default function CourseRecommender() {
   };
 
   const validateInput = (yearValue, areaSectionValue) => {
-    const isValid = yearValue.trim() !== "" && areaSectionValue.trim() !== "";
+    const acceptedYears = ["2021", "2022", "2023"];
+    const acceptedAreaSections = [
+      "A1",
+      "A2",
+      "A3",
+      "B1",
+      "B2",
+      "B4",
+      "B5",
+      "C1",
+      "C2",
+      "C3",
+      "D1",
+      "D2",
+      "D4",
+      "E0",
+      "F0",
+      "E",
+      "F",
+    ];
+
+    const yearInput = yearValue.trim();
+    const areaSectionInput = areaSectionValue.trim();
+
+    const isValid =
+      yearInput !== "" &&
+      areaSectionInput !== "" &&
+      acceptedYears.includes(yearInput) &&
+      acceptedAreaSections.includes(areaSectionInput);
+
     setIsButtonDisabled(!isValid);
   };
 

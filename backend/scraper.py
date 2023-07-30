@@ -180,15 +180,25 @@ def recommend_course(area_section):
 
     for object in json_object:
         for course_code in course_codes:
-            if course_code in object["Label"]:
+            course_label = object["Label"]
+
+            if course_code in course_label:
+                course_title = object["CourseTitle"]
+
+                if "Honors" in course_title:
+                    continue
+
+                if "M" in course_label[-1] or "H" in course_label[-1]:
+                    continue
+
                 if object["AvgGPA"] is None:
-                    course_gpas.append([course_code, object["CourseTitle"], 0])
+                    course_gpas.append([course_code, course_title, 0])
                     continue
 
                 course_gpas.append(
                     [
                         course_code,
-                        object["CourseTitle"],
+                        course_title,
                         round(float(object["AvgGPA"]), 2),
                     ]
                 )

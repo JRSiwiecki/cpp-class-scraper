@@ -13,7 +13,7 @@ export default function TopCourses() {
   useEffect(() => {
     let ignore = false;
 
-    const response = fetch(
+    fetch(
       "https://cpp-ge-recommender-fe170ad56f61.herokuapp.com/api/top-courses",
       {
         method: "POST",

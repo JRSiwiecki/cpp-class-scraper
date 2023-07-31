@@ -117,9 +117,9 @@ export default function CourseRecommender() {
   }
 
   return (
-    <div class="course-recommender-container">
+    <div>
       <Links />
-      <main>
+      <main class="course-recommender-container">
         <header>
           <h1 class="app-header">CPP GE Course Recommender</h1>
         </header>

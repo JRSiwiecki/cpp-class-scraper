@@ -3,9 +3,9 @@ import Links from "./Links";
 
 export default function Home() {
   return (
-    <div class="home-container">
+    <div>
       <Links />
-      <main>
+      <main class="home-container">
         <header>
           <h1>Home</h1>
           <h2>What is this?</h2>

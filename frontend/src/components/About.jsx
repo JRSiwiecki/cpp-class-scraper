@@ -3,9 +3,9 @@ import Links from "./Links";
 
 export default function About() {
   return (
-    <div class="about-container">
+    <div>
       <Links />
-      <main>
+      <main class="about-container">
         <header>
           <h1>About + Credits</h1>
         </header>

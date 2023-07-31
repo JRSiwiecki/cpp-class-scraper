@@ -5,10 +5,17 @@ import React, { useEffect, useState } from "react";
 import Links from "./Links";
 
 // MUI Imports
-import { List, ListItem, ListItemText, Grid } from "@mui/material";
+import {
+  List,
+  ListItem,
+  ListItemText,
+  Grid,
+  CircularProgress,
+} from "@mui/material";
 
 export default function TopCourses() {
   const [jsonResponse, setJsonResponse] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     let ignore = false;
@@ -27,10 +34,12 @@ export default function TopCourses() {
       .then((data) => {
         if (!ignore) {
           setJsonResponse(data);
+          setLoading(false);
         }
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
+        setLoading(false);
       });
     return () => {
       ignore = true;
@@ -67,34 +76,40 @@ export default function TopCourses() {
       <Links />
       <h1>Top Courses Per GE Section (2023)</h1>
       <main>
-        <Grid container spacing={2}>
-          {Object.keys(jsonResponse).map((areaSection, index) => (
-            <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
-              <section
-                key={index}
-                className="area-section-container"
-                style={areaSectionContainerStyle}
-              >
-                <h3>{formatArea(areaSection)}</h3>
-                <List>
-                  {jsonResponse[areaSection].map((course, courseIndex) => (
-                    <ListItem key={courseIndex}>
-                      <div>
-                        <ListItemText primary={"⭐ " + course["CourseCode"]} />
-                        <em>
-                          <ListItemText primary={course["CourseTitle"]} />
-                        </em>
-                        <strong>
-                          Average GPA: {course["AvgGPA"].toFixed(2)}
-                        </strong>
-                      </div>
-                    </ListItem>
-                  ))}
-                </List>
-              </section>
-            </Grid>
-          ))}
-        </Grid>
+        {loading ? (
+          <CircularProgress />
+        ) : (
+          <Grid container spacing={2}>
+            {Object.keys(jsonResponse).map((areaSection, index) => (
+              <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
+                <section
+                  key={index}
+                  className="area-section-container"
+                  style={areaSectionContainerStyle}
+                >
+                  <h3>{formatArea(areaSection)}</h3>
+                  <List>
+                    {jsonResponse[areaSection].map((course, courseIndex) => (
+                      <ListItem key={courseIndex}>
+                        <div>
+                          <ListItemText
+                            primary={"⭐ " + course["CourseCode"]}
+                          />
+                          <em>
+                            <ListItemText primary={course["CourseTitle"]} />
+                          </em>
+                          <strong>
+                            Average GPA: {course["AvgGPA"].toFixed(2)}
+                          </strong>
+                        </div>
+                      </ListItem>
+                    ))}
+                  </List>
+                </section>
+              </Grid>
+            ))}
+          </Grid>
+        )}
       </main>
     </div>
   );

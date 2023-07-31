@@ -39,10 +39,27 @@ export default function TopCourses() {
     height: "725px", // Set a fixed height for all areaSection containers
     padding: "10px",
     border: "1px solid #ccc",
-    margin: "10px 20px",
+    margin: "10px 15px",
     borderRadius: "4px",
   };
 
+  // Remove trailing "0" character from areas "E0" and "F0"
+  function formatArea(area) {
+    const firstDotIndex = area.indexOf(".");
+
+    // Prevent issues from D1 and D2 since they contain more than one "."
+    if (firstDotIndex !== -1) {
+      const areaCode = area.slice(0, firstDotIndex);
+      const areaName = area.slice(firstDotIndex + 1).trim();
+      if (areaName) {
+        const formattedArea = areaCode.endsWith("0")
+          ? areaCode.slice(0, -1)
+          : areaCode;
+        return `${formattedArea}. ${areaName}`;
+      }
+    }
+    return area; // Return the original area if there is no valid format
+  }
   return (
     <div class="hall-of-fame-container">
       <Links />
@@ -56,7 +73,7 @@ export default function TopCourses() {
                 className="area-section-container"
                 style={areaSectionContainerStyle}
               >
-                <h3>{areaSection}</h3>
+                <h3>{formatArea(areaSection)}</h3>
                 <List>
                   {jsonResponse[areaSection].map((course, courseIndex) => (
                     <ListItem key={courseIndex}>

@@ -28,7 +28,7 @@ export default function Class({ jsonResponse }) {
                 <ListItemText primary={course[1]} />
               </em>
             </div>
-            <div style={gpaStyle}>Average GPA: {course[2]}</div>
+            <div style={gpaStyle}>Average GPA: {course[2].toFixed(2)}</div>
           </ListItem>
         ))}
       </List>

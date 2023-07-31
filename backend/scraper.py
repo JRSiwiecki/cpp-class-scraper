@@ -193,16 +193,18 @@ def recommend_course(area_section):
             if course_code in course_label:
                 course_title = object["CourseTitle"]
 
+                # Remove Honors/Activity courses
                 if course_title is not None and (
                     "Honors" in course_title or "Activity" in course_title
                 ):
                     continue
 
-                # Remove language courses
-                if course_title is not None and any(
-                    lang in course_title for lang in language_classes_filter
-                ):
-                    continue
+                # Remove language courses but only when looking in C2 courses
+                if area_section == "C2":
+                    if course_title is not None and (
+                        any(lang in course_title for lang in language_classes_filter)
+                    ):
+                        continue
 
                 course_component = course_label[-1]
 
@@ -265,11 +267,18 @@ def get_top_courses():
                         ):
                             continue
 
-                        # Remove language courses
-                        if course_title is not None and any(
-                            lang in course_title for lang in language_classes_filter
+                        # Remove language courses but only when looking in C2 courses
+                        if (
+                            section
+                            == "2. Literature, Modern Languages, Philosophy and Civilization"
                         ):
-                            continue
+                            if course_title is not None and (
+                                any(
+                                    lang in course_title
+                                    for lang in language_classes_filter
+                                )
+                            ):
+                                continue
 
                         course_component = course_label[-1]
 

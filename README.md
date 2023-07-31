@@ -17,6 +17,3 @@ API: https://cpp-ge-recommender-fe170ad56f61.herokuapp.com/
   * Requires JSON body containing "year" parameter.
   * EXAMPLE:
       { "year": "2023" }
-
-## Front-end
-Front-end: https://jrsiwiecki.github.io/cpp-ge-recommender/

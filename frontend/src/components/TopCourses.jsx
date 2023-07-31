@@ -36,7 +36,7 @@ export default function TopCourses() {
   }, []);
 
   const areaSectionContainerStyle = {
-    height: "700px", // Set a fixed height for all areaSection containers
+    height: "725px", // Set a fixed height for all areaSection containers
     padding: "10px",
     border: "1px solid #ccc",
     margin: "10px 20px",
@@ -56,12 +56,12 @@ export default function TopCourses() {
                 className="area-section-container"
                 style={areaSectionContainerStyle}
               >
-                <h2>{areaSection}</h2>
+                <h3>{areaSection}</h3>
                 <List>
                   {jsonResponse[areaSection].map((course, courseIndex) => (
                     <ListItem key={courseIndex}>
                       <div>
-                        <ListItemText primary={course["CourseCode"]} />
+                        <ListItemText primary={"⭐ " + course["CourseCode"]} />
                         <em>
                           <ListItemText primary={course["CourseTitle"]} />
                         </em>

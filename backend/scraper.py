@@ -218,3 +218,7 @@ def recommend_course(area_section):
 
     result_json = json.dumps(course_gpas)
     return result_json
+
+
+def get_hall_of_fame_courses():
+    return {"hello": "yes"}

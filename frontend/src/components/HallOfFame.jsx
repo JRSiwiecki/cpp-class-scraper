@@ -25,7 +25,7 @@ export default function HallOfFame() {
       <main>
         {courseAreaSections.map((areaSection, index) => (
           <section key={index} class="area-section-container">
-            {areaSection}
+            <h2>{areaSection}</h2>
           </section>
         ))}
       </main>

@@ -5,7 +5,7 @@ export default function About() {
   return (
     <div>
       <Links />
-      <main class="about-container">
+      <main className="about-container">
         <header>
           <h1>About + Credits</h1>
         </header>

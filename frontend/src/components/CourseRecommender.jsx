@@ -122,12 +122,12 @@ export default function CourseRecommender() {
   return (
     <div>
       <Links />
-      <main class="course-recommender-container">
+      <main className="course-recommender-container">
         <header>
-          <h1 class="app-header">CPP GE Course Recommender</h1>
+          <h1 className="app-header">CPP GE Course Recommender</h1>
         </header>
 
-        <div class="text-input-container">
+        <div className="text-input-container">
           <TextField
             id="outlined-basic"
             label="Catalog Year"

@@ -72,7 +72,7 @@ export default function TopCourses() {
     return area; // Return the original area if there is no valid format
   }
   return (
-    <div class="hall-of-fame-container">
+    <div className="hall-of-fame-container">
       <Links />
       <h1>Top Courses Per GE Section (2023)</h1>
       <main>

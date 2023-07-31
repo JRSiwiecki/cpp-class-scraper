@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 // MUI Imports
 import Button from "@mui/material/Button";
-import { TextField } from "@mui/material";
+import { TextField, CircularProgress } from "@mui/material";
 
 // CSS Imports
 import "../css/App.css";
@@ -17,8 +17,10 @@ export default function CourseRecommender() {
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
   const [jsonResponse, setJsonResponse] = useState([]);
   const [requestMessage, setRequestMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   async function postJSON(data) {
+    setLoading(true);
     try {
       const response = await fetch(
         "https://cpp-ge-recommender-fe170ad56f61.herokuapp.com//api/recommend",
@@ -33,9 +35,11 @@ export default function CourseRecommender() {
 
       const result = await response.json();
       setJsonResponse(result);
+      setLoading(false);
       console.log("Success:", result);
     } catch (error) {
       console.error("Error:", error);
+      setLoading(false);
     }
   }
 
@@ -84,7 +88,7 @@ export default function CourseRecommender() {
   };
 
   function handleClick() {
-    if (isButtonDisabled) {
+    if (isButtonDisabled || loading) {
       return;
     }
 
@@ -152,7 +156,7 @@ export default function CourseRecommender() {
         <Button
           variant="contained"
           onClick={handleClick}
-          disabled={isButtonDisabled}
+          disabled={isButtonDisabled || loading}
         >
           Recommend Course
         </Button>
@@ -160,6 +164,7 @@ export default function CourseRecommender() {
         <h2>Recommended Courses</h2>
 
         <h3>{requestMessage}</h3>
+        {loading && <CircularProgress />}
         <Class jsonResponse={jsonResponse} />
       </main>
     </div>

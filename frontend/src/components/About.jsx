@@ -39,12 +39,18 @@ export default function About() {
 
         <br />
 
+        <a href="https://mui.com/" target="_blank" rel="noopener noreferrer">
+          Material UI (Front-end)
+        </a>
+
+        <br />
+
         <a
           href="https://flask.palletsprojects.com/en/2.3.x/"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Flask (Server, Scraper)
+          Flask (Server)
         </a>
 
         <br />

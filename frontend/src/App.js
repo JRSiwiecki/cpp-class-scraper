@@ -10,6 +10,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Home from "./components/Home";
 import CourseRecommender from "./components/CourseRecommender";
 import About from "./components/About";
+import HallOfFame from "./components/HallOfFame";
 
 const darkTheme = createTheme({
   palette: {
@@ -26,6 +27,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/course-recommender" element={<CourseRecommender />} />
         <Route path="/about" element={<About />} />
+        <Route path="/hall-of-fame" element={<HallOfFame />} />
       </Routes>
     </ThemeProvider>
   );

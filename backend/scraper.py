@@ -65,10 +65,10 @@ def categorize_courses():
 
             # edge case as these two don't have sections, just the area
             if current_area == "E":
-                current_section = "0. E SECTION"
+                current_section = "0. Lifelong Learning and Self-Development"
                 section_map[current_section] = []
             elif current_area == "F":
-                current_section = "0. F SECTION"
+                current_section = "0. Ethnic Studies"
                 section_map[current_section] = []
 
             area_map[current_area] = []
@@ -99,8 +99,8 @@ def categorize_courses():
                     section_map[current_section].append(span.text[0 : end_marker - 1])
 
     # hard code solution for E and F
-    area_map["E"].append("0. E SECTION")
-    area_map["F"].append("0. F SECTION")
+    area_map["E"].append("0. Lifelong Learning and Self-Development")
+    area_map["F"].append("0. Ethnic Studies")
 
 
 def get_opencpp_api_data():

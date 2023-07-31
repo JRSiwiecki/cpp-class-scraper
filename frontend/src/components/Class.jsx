@@ -16,6 +16,7 @@ const gpaStyle = {
   marginLeft: "20px",
 };
 
+// A course follows this format: [courseLabel, courseTitle, courseAvgGpa]
 export default function Class({ jsonResponse }) {
   return (
     <section>

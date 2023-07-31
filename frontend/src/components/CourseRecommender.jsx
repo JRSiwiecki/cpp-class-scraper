@@ -16,6 +16,7 @@ export default function CourseRecommender() {
   const [areaSection, setAreaSection] = useState("");
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
   const [jsonResponse, setJsonResponse] = useState([]);
+  const [requestMessage, setRequestMessage] = useState("");
 
   async function postJSON(data) {
     try {
@@ -111,6 +112,7 @@ export default function CourseRecommender() {
       return;
     }
 
+    setRequestMessage(year + " " + areaSection);
     postJSON({ year: year, area_section: areaSection });
   }
 
@@ -157,9 +159,7 @@ export default function CourseRecommender() {
 
         <h2>Recommended Courses</h2>
 
-        <h3>
-          {year} {areaSection}
-        </h3>
+        <h3>{requestMessage}</h3>
         <Class jsonResponse={jsonResponse} />
       </main>
     </div>

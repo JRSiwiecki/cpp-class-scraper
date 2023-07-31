@@ -111,6 +111,14 @@ def get_opencpp_api_data():
     json_object = json.loads(response.text)
 
 
+language_classes_filter = [
+    "Chinese",
+    "French",
+    "Spanish",
+    "German",
+]
+
+
 def recommend_course(area_section):
     requested_data = area_section
 
@@ -190,6 +198,12 @@ def recommend_course(area_section):
                 ):
                     continue
 
+                # Remove language courses
+                if course_title is not None and any(
+                    lang in course_title for lang in language_classes_filter
+                ):
+                    continue
+
                 course_component = course_label[-1]
 
                 if course_label is not None and (
@@ -244,9 +258,16 @@ def get_top_courses():
                     course_label = object["Label"]
                     course_title = object["CourseTitle"]
 
+                    # Remove Honors/Activity Courses
                     if course_code in course_label:
                         if course_title is not None and (
                             "Honors" in course_title or "Activity" in course_title
+                        ):
+                            continue
+
+                        # Remove language courses
+                        if course_title is not None and any(
+                            lang in course_title for lang in language_classes_filter
                         ):
                             continue
 

@@ -18,10 +18,10 @@ export default function Links() {
   };
 
   const navigationLinks = [
-    { label: "Home", to: "/" },
-    { label: "Course Recommender", to: "/course-recommender" },
-    { label: "Top Courses", to: "/top-courses" },
-    { label: "About", to: "/about" },
+    { label: "🏠 Home", to: "/" },
+    { label: "📝 Course Recommender", to: "/course-recommender" },
+    { label: "🏆 Top Courses", to: "/top-courses" },
+    { label: "❓ About", to: "/about" },
   ];
 
   const sideList = () => (

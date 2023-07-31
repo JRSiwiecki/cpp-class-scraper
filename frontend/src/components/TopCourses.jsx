@@ -27,7 +27,6 @@ export default function TopCourses() {
       .then((data) => {
         if (!ignore) {
           setJsonResponse(data);
-          console.log(data);
         }
       })
       .catch((error) => {

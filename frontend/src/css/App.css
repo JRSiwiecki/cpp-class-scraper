@@ -76,14 +76,3 @@
     text-align: center;
   }
 }
-
-div.hall-of-fame-container main {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-gap: 10px;
-}
-
-.area-section-container {
-  border: 1px solid #707070bd;
-  padding: 20px;
-}

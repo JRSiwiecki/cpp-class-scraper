@@ -12,8 +12,8 @@ export default function Links() {
           Course Recommender
         </Link>
 
-        <Link class="link" to="/hall-of-fame">
-          Hall of Fame
+        <Link class="link" to="/top-courses">
+          Top Courses
         </Link>
 
         <Link class="link" to="/about">

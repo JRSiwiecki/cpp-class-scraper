@@ -36,7 +36,7 @@ export default function TopCourses() {
   }, []);
 
   const areaSectionContainerStyle = {
-    height: "725px", // Set a fixed height for all areaSection containers
+    height: "750px", // Set a fixed height for all areaSection containers
     padding: "10px",
     border: "1px solid #ccc",
     margin: "10px 15px",
@@ -63,7 +63,7 @@ export default function TopCourses() {
   return (
     <div class="hall-of-fame-container">
       <Links />
-      <h1>Top Courses Per GE Section</h1>
+      <h1>Top Courses Per GE Section (2023)</h1>
       <main>
         <Grid container spacing={2}>
           {Object.keys(jsonResponse).map((areaSection, index) => (

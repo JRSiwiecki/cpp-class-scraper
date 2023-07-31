@@ -13,13 +13,16 @@ export default function TopCourses() {
   useEffect(() => {
     let ignore = false;
 
-    const response = fetch("http://127.0.0.1:5000//api/top-courses", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ year: "2023" }),
-    })
+    const response = fetch(
+      "https://cpp-ge-recommender-fe170ad56f61.herokuapp.com/api/top-courses",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ year: "2023" }),
+      }
+    )
       .then((response) => response.json())
       .then((data) => {
         if (!ignore) {

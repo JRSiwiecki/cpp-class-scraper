@@ -36,9 +36,10 @@ export default function TopCourses() {
   }, []);
 
   const areaSectionContainerStyle = {
-    height: "750px", // Set a fixed height for all areaSection containers
+    height: "700px", // Set a fixed height for all areaSection containers
     padding: "10px",
     border: "1px solid #ccc",
+    margin: "10px 20px",
     borderRadius: "4px",
   };
 

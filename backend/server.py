@@ -6,6 +6,7 @@ from scraper import (
     categorize_courses,
     get_opencpp_api_data,
     recommend_course,
+    get_top_courses,
 )
 
 app = Flask(__name__)
@@ -35,6 +36,23 @@ def api_recommend_course():
     recommend_courses = recommend_course(area_section)
 
     return recommend_courses
+
+
+@app.route("/api/top-courses", methods=["POST"])
+def api_top_courses():
+    data = request.get_json()
+    year = data.get("year")
+
+    valid_year = scrape_cpp_data(year)
+
+    if valid_year:
+        response = {"Message": "Year invalid."}
+        return json.dumps(response)
+
+    categorize_courses()
+    top_courses = get_top_courses()
+
+    return top_courses
 
 
 # if __name__ == "__main__":

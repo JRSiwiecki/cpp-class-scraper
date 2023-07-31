@@ -31,6 +31,13 @@
   transition: 0.35s;
 }
 
+@media (max-width: 460px) {
+  .link-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
 .link:hover {
   background-color: #174145;
 }
@@ -48,6 +55,7 @@
 }
 
 .home-container,
+.hall-of-fame-container,
 .about-container {
   text-align: center;
 }

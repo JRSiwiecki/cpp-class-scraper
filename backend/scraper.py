@@ -65,10 +65,10 @@ def categorize_courses():
 
             # edge case as these two don't have sections, just the area
             if current_area == "E":
-                current_section = "0. E SECTION"
+                current_section = "0. Lifelong Learning and Self-Development"
                 section_map[current_section] = []
             elif current_area == "F":
-                current_section = "0. F SECTION"
+                current_section = "0. Ethnic Studies"
                 section_map[current_section] = []
 
             area_map[current_area] = []
@@ -99,8 +99,8 @@ def categorize_courses():
                     section_map[current_section].append(span.text[0 : end_marker - 1])
 
     # hard code solution for E and F
-    area_map["E"].append("0. E SECTION")
-    area_map["F"].append("0. F SECTION")
+    area_map["E"].append("0. Lifelong Learning and Self-Development")
+    area_map["F"].append("0. Ethnic Studies")
 
 
 def get_opencpp_api_data():
@@ -217,4 +217,70 @@ def recommend_course(area_section):
     course_gpas = sorted(course_gpas, key=lambda x: x[2], reverse=True)
 
     result_json = json.dumps(course_gpas)
+    return result_json
+
+
+def get_top_courses():
+    hall_of_fame_courses = {}
+
+    for area in area_map.keys():
+        sections = area_map[area]
+
+        if area not in area_map or (
+            area == "B" and "3. Laboratory Activity" in area_map[area]
+        ):
+            continue
+
+        for section in sections:
+            found_classes = section_map[section]
+
+            section_courses = []
+
+            for found_class in found_classes:
+                end_marker = found_class.index("-") - 1
+                course_code = found_class[0:end_marker]
+
+                for object in json_object:
+                    course_label = object["Label"]
+                    course_title = object["CourseTitle"]
+
+                    if course_code in course_label:
+                        if course_title is not None and (
+                            "Honors" in course_title or "Activity" in course_title
+                        ):
+                            continue
+
+                        course_component = course_label[-1]
+
+                        if course_label is not None and (
+                            "M" in course_component
+                            or "H" in course_component
+                            or "L" in course_component
+                            or "A" in course_component
+                        ):
+                            continue
+
+                        course_average_gpa = object["AvgGPA"]
+
+                        if course_average_gpa is None:
+                            course_average_gpa = 0
+                        else:
+                            course_average_gpa = round(float(course_average_gpa), 2)
+
+                        course_info = {
+                            "CourseCode": course_code,
+                            "CourseTitle": course_title,
+                            "AvgGPA": course_average_gpa,
+                        }
+
+                        section_courses.append(course_info)
+
+            section_courses = sorted(
+                section_courses, key=lambda x: x["AvgGPA"], reverse=True
+            )
+            area_section_title = f"{area}{section}"
+            hall_of_fame_courses[area_section_title] = section_courses[:5]
+
+    result_json = json.dumps(hall_of_fame_courses)
+
     return result_json

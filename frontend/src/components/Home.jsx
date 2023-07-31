@@ -47,6 +47,17 @@ export default function Home() {
             <em>Note that some classes may appear twice.</em>
           </p>
         </div>
+        <h2>Instructions for viewing Top Courses</h2>
+        <div class="instructions-container">
+          <p>1. Go to Top Courses</p>
+          <p>
+            2. After initial load, up to 5 classes will appear per GE section.
+          </p>
+          <p>
+            3. The 5 classes displayed have the highest average GPA from the
+            students who took the course.
+          </p>
+        </div>
       </main>
     </div>
   );

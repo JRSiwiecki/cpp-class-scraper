@@ -34,16 +34,16 @@
   background-color: #174145;
 }
 
-.about-container main a {
+main.about-container a {
   color: #87cefa;
 }
 
-.about-container main a:visited {
+main.about-container a:visited {
   color: #aa8fc7;
 }
 
-.about-container main a:hover {
-  color: #ffffffb6;
+main.about-container a:hover {
+  color: #ffffffce;
 }
 
 .home-container,

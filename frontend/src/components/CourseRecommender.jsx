@@ -36,7 +36,6 @@ export default function CourseRecommender() {
       const result = await response.json();
       setJsonResponse(result);
       setLoading(false);
-      console.log("Success:", result);
     } catch (error) {
       console.error("Error:", error);
       setLoading(false);

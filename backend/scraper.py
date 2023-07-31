@@ -193,6 +193,9 @@ def recommend_course(area_section):
             if course_code in course_label:
                 course_title = object["CourseTitle"]
 
+                if course_title is None:
+                    course_title = get_course_title(found_class)
+
                 # Remove Honors/Activity courses
                 if course_title is not None and (
                     "Honors" in course_title or "Activity" in course_title
@@ -260,6 +263,9 @@ def get_top_courses():
                     course_label = object["Label"]
                     course_title = object["CourseTitle"]
 
+                    if course_title is None:
+                        course_title = get_course_title(found_class)
+
                     # Remove Honors/Activity Courses
                     if course_code in course_label:
                         if course_title is not None and (
@@ -314,3 +320,11 @@ def get_top_courses():
     result_json = json.dumps(hall_of_fame_courses)
 
     return result_json
+
+
+# Used in case the data from OpenCPP API doesn't contain a course title
+def get_course_title(full_course_name):
+    # start 2 characters after the " - " separating class code from title
+    start_marker = full_course_name.index("-") + 2
+
+    return full_course_name[start_marker:]

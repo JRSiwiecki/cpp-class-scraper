@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/cpp-ge-recommender/static/css/main.f4dd3f25.css",
-    "main.js": "/cpp-ge-recommender/static/js/main.b9cc50ac.js",
+    "main.css": "/cpp-ge-recommender/static/css/main.f5658a83.css",
+    "main.js": "/cpp-ge-recommender/static/js/main.839c2dee.js",
     "index.html": "/cpp-ge-recommender/index.html",
-    "main.f4dd3f25.css.map": "/cpp-ge-recommender/static/css/main.f4dd3f25.css.map",
-    "main.b9cc50ac.js.map": "/cpp-ge-recommender/static/js/main.b9cc50ac.js.map"
+    "main.f5658a83.css.map": "/cpp-ge-recommender/static/css/main.f5658a83.css.map",
+    "main.839c2dee.js.map": "/cpp-ge-recommender/static/js/main.839c2dee.js.map"
   },
   "entrypoints": [
-    "static/css/main.f4dd3f25.css",
-    "static/js/main.b9cc50ac.js"
+    "static/css/main.f5658a83.css",
+    "static/js/main.839c2dee.js"
   ]
 }

@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <div>
       <Links />
-      <main class="home-container">
+      <main className="home-container">
         <header>
           <h1>Home</h1>
           <h2>What is this?</h2>
@@ -22,7 +22,7 @@ export default function Home() {
           <h2>Instructions for using Course Recommender</h2>
         </header>
 
-        <div class="instructions-container">
+        <div className="instructions-container">
           <p>1. Go to Course Recommender</p>
 
           <p>
@@ -48,7 +48,7 @@ export default function Home() {
           </p>
         </div>
         <h2>Instructions for viewing Top Courses</h2>
-        <div class="instructions-container">
+        <div className="instructions-container">
           <p>1. Go to Top Courses</p>
           <p>
             2. After initial load, up to 5 classes will appear per GE section.

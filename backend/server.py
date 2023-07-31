@@ -6,7 +6,7 @@ from scraper import (
     categorize_courses,
     get_opencpp_api_data,
     recommend_course,
-    get_hall_of_fame_courses,
+    get_top_courses,
 )
 
 app = Flask(__name__)
@@ -38,8 +38,8 @@ def api_recommend_course():
     return recommend_courses
 
 
-@app.route("/api/hall-of-fame", methods=["POST"])
-def api_hall_of_fame_courses():
+@app.route("/api/top-courses", methods=["POST"])
+def api_top_courses():
     data = request.get_json()
     year = data.get("year")
 
@@ -50,9 +50,9 @@ def api_hall_of_fame_courses():
         return json.dumps(response)
 
     categorize_courses()
-    hall_of_fame_courses = get_hall_of_fame_courses()
+    top_courses = get_top_courses()
 
-    return hall_of_fame_courses
+    return top_courses
 
 
 # if __name__ == "__main__":

@@ -220,9 +220,7 @@ def recommend_course(area_section):
     return result_json
 
 
-def get_hall_of_fame_courses():
-    print("hall of fame")
-
+def get_top_courses():
     hall_of_fame_courses = {}
 
     for area in area_map.keys():

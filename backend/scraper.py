@@ -245,15 +245,16 @@ def get_top_courses():
     for area in area_map.keys():
         sections = area_map[area]
 
-        if area not in area_map or (
-            area == "B" and "3. Laboratory Activity" in area_map[area]
-        ):
-            continue
-
         for section in sections:
             found_classes = section_map[section]
 
             section_courses = []
+
+            # Skip area section B3
+            if area not in area_map or (
+                area == "B" and section == "3. Laboratory Activity"
+            ):
+                continue
 
             for found_class in found_classes:
                 end_marker = found_class.index("-") - 1

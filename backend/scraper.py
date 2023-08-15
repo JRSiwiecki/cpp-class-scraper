@@ -66,7 +66,6 @@ def scrape_cpp_data(catalog_year):
         cached_data[catalog_year] = class_areas
 
     else:
-        print("using cache")
         class_areas = cached_data.get(catalog_year, None)
 
 
@@ -156,8 +155,6 @@ language_classes_filter = [
 
 def recommend_course(area_section):
     requested_data = area_section
-
-    print(area_section)
 
     if len(requested_data) < 2:
         response = {"Message": "Input too short."}

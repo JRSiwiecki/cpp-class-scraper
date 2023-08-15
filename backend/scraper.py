@@ -2,6 +2,10 @@ import requests
 import json
 from bs4 import BeautifulSoup
 
+# cache scraped data so we don't make repetitive scrapes
+cached_data = {}
+cached_data["2021"] = cached_data["2022"] = cached_data["2023"] = None
+
 
 # scrape data using beautifulsoup
 def scrape_cpp_data(catalog_year):
@@ -11,28 +15,59 @@ def scrape_cpp_data(catalog_year):
 
     accepted_years = ["2021", "2022", "2023"]
 
+    using_cached_data = False
+
     if catalog_year not in accepted_years:
         response = {"Message": "Year invalid."}
         return json.dumps(response)
 
+    # check which year to use, also check if we have cached data for that year
+    # or not. if we don't then, we need to make sure to grab the data later
     match catalog_year:
         case "2021":
-            URL = url_2021
+            if cached_data[catalog_year] is not None:
+                using_cached_data = True
+
+            else:
+                using_cached_data = False
+                URL = url_2021
         case "2022":
-            URL = url_2022
+            if cached_data[catalog_year] is not None:
+                using_cached_data = True
+
+            else:
+                using_cached_data = False
+                URL = url_2022
         case "2023":
-            URL = url_2023
+            if cached_data[catalog_year] is not None:
+                using_cached_data = True
+
+            else:
+                using_cached_data = False
+                URL = url_2023
         case _:
-            URL = url_2023
-            response = {"Message": "Year invalid."}
-            return json.dumps(response)
+            if cached_data[catalog_year] is not None:
+                using_cached_data = True
 
-    page = requests.get(URL)
-
-    soup = BeautifulSoup(page.content, "html.parser")
+            else:
+                using_cached_data = False
+                URL = url_2023
 
     global class_areas
-    class_areas = soup.find_all("div", class_="acalog-core")
+
+    if not using_cached_data:
+        page = requests.get(URL)
+
+        soup = BeautifulSoup(page.content, "html.parser")
+
+        class_areas = soup.find_all("div", class_="acalog-core")
+
+        # cache data for future calls
+        cached_data[catalog_year] = class_areas
+
+    else:
+        print("using cache")
+        class_areas = cached_data.get(catalog_year, None)
 
 
 def categorize_courses():
@@ -121,6 +156,8 @@ language_classes_filter = [
 
 def recommend_course(area_section):
     requested_data = area_section
+
+    print(area_section)
 
     if len(requested_data) < 2:
         response = {"Message": "Input too short."}

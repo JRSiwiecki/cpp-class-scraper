@@ -23,8 +23,12 @@ def hello_world():
 @app.route("/api/recommend", methods=["POST"])
 def api_recommend_course():
     data = request.get_json()
+
     year = data.get("year")
     area_section = data.get("area_section")
+
+    if year is None or area_section is None:
+        return json.dumps({"Message": "year or area_section is missing."})
 
     valid_year = scrape_cpp_data(year)
 
@@ -42,6 +46,9 @@ def api_recommend_course():
 def api_top_courses():
     data = request.get_json()
     year = data.get("year")
+
+    if year is None:
+        return json.dumps({"Message": "year is missing."})
 
     valid_year = scrape_cpp_data(year)
 

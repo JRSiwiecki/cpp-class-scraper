@@ -105,6 +105,8 @@ export default function CourseRecommender() {
       return;
     }
 
+    setRequestMessage(year + " " + areaSection);
+
     if (areaSection === "E") {
       postJSON({ year: year, area_section: "E0" });
       return;
@@ -115,7 +117,6 @@ export default function CourseRecommender() {
       return;
     }
 
-    setRequestMessage(year + " " + areaSection);
     postJSON({ year: year, area_section: areaSection });
   }
 
@@ -143,7 +144,7 @@ export default function CourseRecommender() {
             label="Area + Section"
             variant="outlined"
             required
-            helperText="Ex) A1, B2, E0, F0"
+            helperText="Ex) A1, B2, C3, E, F"
             value={areaSection}
             onChange={handleAreaSectionChange}
           />

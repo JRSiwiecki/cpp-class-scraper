@@ -34,15 +34,15 @@
   background-color: #174145;
 }
 
-main.about-container a {
+.about-container a {
   color: #87cefa;
 }
 
-main.about-container a:visited {
+.about-container a:visited {
   color: #aa8fc7;
 }
 
-main.about-container a:hover {
+.about-container a:hover {
   color: #ffffffce;
 }
 

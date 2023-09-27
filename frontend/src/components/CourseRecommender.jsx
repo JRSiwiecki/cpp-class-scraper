@@ -134,7 +134,7 @@ export default function CourseRecommender() {
             label="Catalog Year"
             variant="outlined"
             required
-            helperText="Ex) 2021, 2022, 2023 (From 2021)"
+            helperText="Ex) 2022, 2023 (From 2021)"
             value={year}
             onChange={handleYearChange}
           />

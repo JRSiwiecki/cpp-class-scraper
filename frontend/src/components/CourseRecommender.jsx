@@ -81,7 +81,8 @@ export default function CourseRecommender() {
       yearInput !== "" &&
       areaSectionInput !== "" &&
       acceptedYears.includes(yearInput) &&
-      acceptedAreaSections.includes(areaSectionInput);
+      (acceptedAreaSections.includes(areaSectionInput) ||
+        acceptedAreaSections.includes(areaSectionInput.toUpperCase()));
 
     setIsButtonDisabled(!isValid);
   };
@@ -107,12 +108,12 @@ export default function CourseRecommender() {
 
     setRequestMessage(year + " " + areaSection);
 
-    if (areaSection === "E") {
+    if (areaSection === "E" || areaSection === "e") {
       postJSON({ year: year, area_section: "E0" });
       return;
     }
 
-    if (areaSection === "F") {
+    if (areaSection === "F" || areaSection === "f") {
       postJSON({ year: year, area_section: "F0" });
       return;
     }
@@ -134,7 +135,7 @@ export default function CourseRecommender() {
             label="Catalog Year"
             variant="outlined"
             required
-            helperText="Ex) 2022, 2023 (From 2021)"
+            helperText="Ex) 2022 (Only 2021-2023)"
             value={year}
             onChange={handleYearChange}
           />
